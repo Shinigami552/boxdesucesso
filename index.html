@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oferta Relâmpago - Box de Sucesso</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000; /* Fundo preto puro */
+            color: #ffffff; /* Texto branco para contraste */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            background-color: #1a1a1a; /* Fundo cinza escuro para o conteúdo */
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            max-width: 900px;
+            width: 100%;
+            text-align: center;
+            border: 1px solid #333333;
+        }
+        .header {
+            background-color: #e50914; /* Vermelho vibrante para o cabeçalho */
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(229, 9, 20, 0.6);
+        }
+        .header svg {
+            width: 30px;
+            height: 30px;
+        }
+        .discount-badge {
+            background-color: #e50914; /* Vermelho para o selo de desconto */
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            display: inline-block;
+            box-shadow: 0 3px 10px rgba(229, 9, 20, 0.4);
+        }
+        .product-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+        .price-section {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        .old-price {
+            font-size: 1.5rem;
+            color: #aaaaaa; /* Cinza claro para o preço antigo */
+            text-decoration: line-through;
+            font-weight: 600;
+        }
+        .new-price {
+            font-size: 3rem;
+            color: #ff3333; /* Vermelho mais claro para o novo preço */
+            font-weight: 800;
+            margin-top: 10px;
+            display: block;
+        }
+        .cta-button {
+            background-color: #dc3545; /* Vermelho forte para o botão CTA */
+            color: white;
+            padding: 18px 35px;
+            border-radius: 12px;
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 8px 20px rgba(220, 53, 69, 0.4);
+            border: none;
+            cursor: pointer;
+        }
+        .cta-button:hover {
+            background-color: #c82333; /* Vermelho mais escuro no hover */
+            transform: translateY(-3px);
+        }
+        .cta-button:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 10px rgba(220, 53, 69, 0.4);
+        }
+        .access-info {
+            margin-top: 25px;
+            font-size: 1.1rem;
+            color: #cccccc;
+            margin-bottom: 40px;
+        }
+        .impact-message {
+            font-size: 1.3rem;
+            color: #dddddd;
+            margin-top: 25px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            font-weight: 500;
+            padding: 0 15px;
+        }
+        .impact-message strong {
+            color: #ffffff;
+        }
+
+        /* Estilos para a Seção de Provas Sociais em Imagens */
+        .social-proof-section {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #1a1a1a; /* Fundo cinza escuro */
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            border: 1px solid #333333;
+        }
+        .social-proof-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 30px;
+        }
+        .social-proof-images {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .social-proof-image-wrapper {
+            flex: 1 1 calc(33% - 20px);
+            max-width: calc(33% - 20px);
+            min-width: 180px; /* Ajustado para melhor responsividade em formato vertical */
+            background-color: #2c2c2c; /* Cinza um pouco mais claro para a caixa da imagem */
+            border-radius: 10px;
+            padding: 10px; /* Reduzido o padding */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            position: relative; /* Para o truque de aspect ratio */
+            padding-bottom: 0; /* Reset para usar o padding-bottom do container interno */
+        }
+        .social-proof-image-container { /* Novo container para definir o aspect ratio */
+            position: relative;
+            width: 100%;
+            padding-bottom: 177.77%; /* Proporção 9:16 (16 / 9 * 100%) */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px; /* Borda arredondada para a imagem */
+        }
+        .social-proof-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Garante que a imagem preencha o espaço */
+            border-radius: 8px; /* Borda arredondada */
+            margin-bottom: 0; /* Remove margem da imagem, agora a legenda tem sua própria margem */
+        }
+        .image-caption {
+            font-size: 0.9rem;
+            color: #cccccc;
+            text-align: center;
+            margin-top: 10px; /* Margem entre a imagem e a legenda */
+            padding: 0 5px; /* Padding horizontal para a legenda */
+        }
+
+        /* Estilos para o Contador Regressivo */
+        .countdown-timer {
+            background-color: #e50914; /* Vermelho para o timer */
+            color: #ffffff; /* Texto branco */
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-top: -15px;
+            margin-bottom: 25px;
+            display: inline-block;
+            box-shadow: 0 5px 15px rgba(229, 9, 20, 0.5);
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Estilos para a Garantia de Satisfação */
+        .guarantee-section {
+            background-color: #1a1a1a; /* Fundo cinza escuro */
+            color: #ffffff;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            border: 1px solid #333333;
+        }
+        .guarantee-section svg {
+            width: 40px;
+            height: 40px;
+            color: #ff3333; /* Vermelho para o selo */
+        }
+        .guarantee-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+        .guarantee-text strong {
+            color: #ffffff;
+        }
+
+        /* Estilos para o Carrossel de Livros */
+        .book-carousel-section {
+            margin-top: 30px;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #1a1a1a;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            border: 1px solid #333333;
+            position: relative;
+            overflow: hidden;
+        }
+        .book-carousel-slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .book-carousel-slide {
+            min-width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .book-carousel-slide img {
+            max-width: 80%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+        }
+        .book-carousel-nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(229, 9, 20, 0.7); /* Vermelho translúcido */
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+            z-index: 10;
+        }
+        .book-carousel-nav-button:hover {
+            background-color: rgba(229, 9, 20, 1); /* Vermelho sólido no hover */
+        }
+        .book-carousel-nav-button.prev {
+            left: 10px;
+        }
+        .book-carousel-nav-button.next {
+            right: 10px;
+        }
+        .book-carousel-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 10px;
+        }
+        .book-carousel-dots .dot {
+            width: 10px;
+            height: 10px;
+            background-color: #4a4a4a; /* Cinza escuro */
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .book-carousel-dots .dot.active {
+            background-color: #e50914; /* Vermelho ativo */
+        }
+
+        /* Estilos para a mensagem de benefício final */
+        .final-benefit-message {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ff3333; /* Vermelho para destaque */
+            margin-top: 15px;
+            margin-bottom: 20px;
+            line-height: 1.4;
+            padding: 0 10px;
+        }
+        .final-benefit-message strong {
+            color: #ffffff; /* Texto em negrito branco para contraste */
+        }
+
+        /* Estilos para a Imagem de Capa */
+        .cover-image-section {
+            margin-top: 20px; /* Ajustado para ficar mais próximo do badge */
+            margin-bottom: 30px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+        .cover-image-section img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Estilos para as Opções de Plano */
+        .plan-options-section {
+            margin-top: 40px;
+            margin-bottom: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        .plan-card {
+            background-color: #1a1a1a; /* Fundo cinza escuro para os cards */
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            padding: 25px;
+            flex: 1 1 calc(50% - 30px); /* Dois cards por linha em telas maiores */
+            max-width: calc(50% - 30px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid #333333;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .plan-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+        }
+        .plan-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #e50914; /* Vermelho para o título do plano */
+            margin-bottom: 10px;
+        }
+        .plan-books {
+            font-size: 1.2rem;
+            color: #cccccc;
+            margin-bottom: 15px;
+        }
+        .plan-price-old {
+            font-size: 1.2rem;
+            color: #aaaaaa;
+            text-decoration: line-through;
+            font-weight: 600;
+        }
+        .plan-price-new {
+            font-size: 2.5rem;
+            color: #ff3333; /* Vermelho mais claro para o novo preço */
+            font-weight: 800;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            display: block;
+        }
+        .plan-cta-button {
+            background-color: #e50914; /* Vermelho forte para o botão CTA do plano */
+            color: white;
+            padding: 12px 25px;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 5px 15px rgba(229, 9, 20, 0.5);
+            border: none;
+            cursor: pointer;
+        }
+        .plan-cta-button:hover {
+            background-color: #cc0000;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive adjustments for plan cards */
+        @media (max-width: 768px) {
+            .plan-card {
+                flex: 1 1 100%; /* Um card por linha em telas menores */
+                max-width: 100%;
+            }
+            .plan-title {
+                font-size: 1.6rem;
+            }
+            .plan-price-new {
+                font-size: 2rem;
+            }
+            .plan-cta-button {
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- Ícone de raio para "Oferta Relâmpago" -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                <path fill-rule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a8.75 8.75 0 002.041-1.47L17.14 16.7a3.75 3.75 0 00-.412-4.725l-.947-1.095a.75.75 0 00-.073-1.04l.713-.82a.75.75 0 00-.113-1.22l-3.182-1.144a1.5 1.5 0 01-1.052-1.151 1.5 1.5 0 01.424-1.465l.078-.084a.75.75 0 00-.086 1.09l-.422-.727A.75.75 0 009.53 1.09l-3.182 1.145A1.5 1.5 0 015.3 3.386a1.5 1.5 0 01-.424 1.465l-.078.084a.75.75 0 00-.086 1.09l.422.727A.75.75 0 005.47 7.26l-.713.82a.75.75 0 00.073 1.04l.947 1.095c.347.4.64.873.865 1.394l.02.042a.75.75 0 00.177.209l.02.021.05.049a8.752 8.752 0 002.041 1.47L11.54 22.351z" />
+            </svg>
+            OFERTA RELÂMPAGO
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                <path fill-rule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a8.75 8.75 0 002.041-1.47L17.14 16.7a3.75 3.75 0 00-.412-4.725l-.947-1.095a.75.75 0 00-.073-1.04l.713-.82a.75.75 0 00-.113-1.22l-3.182-1.144a1.5 1.5 0 01-1.052-1.151 1.5 1.5 0 01.424-1.465l.078-.084a.75.75 0 00-.086 1.09l-.422-.727A.75.75 0 009.53 1.09l-3.182 1.145A1.5 1.5 0 015.3 3.386a1.5 1.5 0 01-.424 1.465l-.078.084a.75.75 0 00-.086 1.09l.422.727A.75.75 0 005.47 7.26l-.713.82a.75.75 0 00.073 1.04l.947 1.095c.347.4.64.873.865 1.394l.02.042a.75.75 0 00.177.209l.02.021.05.049a8.752 8.752 0 002.041 1.47L11.54 22.351z" />
+            </svg>
+        </div>
+
+        <div class="discount-badge">80% DE DESCONTO</div>
+
+        <!-- Imagem de Capa (Banner) -->
+        <div class="cover-image-section">
+            <!-- Substitua 'URL_DA_IMAGEM_DE_CAPA_AQUI' pela URL real da sua imagem de capa/banner -->
+            <img src="capa/imagem.jpg" alt="Imagem de Capa da Oferta">
+        </div>
+
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4">BOX DE SUCESSO</h1>
+
+        <!-- Mensagem de Benefício Final -->
+        <div class="final-benefit-message">
+            Seu guia completo para <strong>superar vícios, aumentar disciplina e alcançar sucesso pessoal e profissional!</strong>
+        </div>
+
+        <p class="text-lg md:text-xl text-gray-400 mb-6">Escolha seu plano de sucesso!</p>
+
+        <!-- Contador Regressivo -->
+        <div id="countdown" class="countdown-timer"></div>
+
+        <!-- Mensagem de impacto sobre crescimento pessoal -->
+        <div class="impact-message">
+            Acreditamos que o <strong>crescimento pessoal</strong> é a chave para uma vida plena e de sucesso.
+            Esteja você buscando <strong>melhorar suas finanças, seus relacionamentos ou sua mentalidade</strong>,
+            este Box de Sucesso é o seu ponto de partida para uma transformação duradoura.
+            Invista em você, invista no seu futuro!
+        </div>
+
+        <!-- Carrossel de Imagens dos Livros -->
+        <div class="book-carousel-section">
+            <div class="book-carousel-slides" id="bookCarouselSlides">
+                <!-- Imagem do Livro 1: Substitua 'URL_DA_IMAGEM_DO_LIVRO_1_AQUI' pela URL real da sua imagem -->
+                <div class="book-carousel-slide">
+                    <img src="Slide/2 (1).png" alt="Capa do Livro 1">
+                </div>
+                <!-- Imagem do Livro 2: Substitua 'URL_DA_IMAGEM_DO_LIVRO_2_AQUI' pela URL real da sua imagem -->
+                <div class="book-carousel-slide">
+                    <img src="Slide/2 (2).png" alt="Capa do Livro 2">
+                </div>
+                <!-- Imagem do Livro 3: Substitua 'URL_DA_IMAGEM_DO_LIVRO_3_AQUI' pela URL real da sua imagem -->
+                <div class="book-carousel-slide">
+                    <img src="Slide/2 (3).png" alt="Capa do Livro 3">
+                </div>
+                <!-- Imagem do Livro 4: Substitua 'URL_DA_IMAGEM_DO_LIVRO_4_AQUI' pela URL real da sua imagem -->
+                <div class="book-carousel-slide">
+                    <img src="Slide/2 (4).png" alt="Capa do Livro 4">
+                </div>
+                <!-- Imagem do Livro 5: Substitua 'URL_DA_IMAGEM_DO_LIVRO_5_AQUI' pela URL real da sua imagem -->
+                <div class="book-carousel-slide">
+                    <img src="Slide/2 (5).png" alt="Capa do Livro 5">
+                </div>
+                <!-- Imagem do Livro 6: Substitua 'URL_DA_IMAGEM_DO_LIVRO_6_AQUI' pela URL real da sua imagem -->
+                <div class="book-carousel-slide">
+                    <img src="Slide/2 (6).png" alt="Capa do Livro 6">
+                </div>
+                <!-- Imagem do Livro 7: Substitua 'URL_DA_IMAGEM_DO_LIVRO_7_AQUI' pela URL real da sua imagem -->
+                <div class="book-carousel-slide">
+                    <img src="Slide/2 (7).png" alt="Capa do Livro 7">
+                </div>
+            </div>
+            <button class="book-carousel-nav-button prev" id="bookPrevSlide">&#10094;</button>
+            <button class="book-carousel-nav-button next" id="bookNextSlide">&#10095;</button>
+            <div class="book-carousel-dots" id="bookCarouselDots"></div>
+        </div>
+
+        <!-- Imagem da promoção principal (mantida para a oferta geral, se desejar) -->
+        <img src="oferta/oferta.jpg.png" alt="Box de Sucesso Completo" >
+
+        <!-- Opções de Plano -->
+        <div class="plan-options-section">
+            <!-- Plano Básico -->
+            <div class="plan-card">
+                <h3 class="plan-title">Plano Básico</h3>
+                <p class="plan-books">4 Livros Digitais Essenciais</p>
+                <div class="price-section">
+                    <span class="plan-price-old">DE R$150,00 POR</span>
+                    <span class="plan-price-new">R$29,90</span>
+                </div>
+                <a href="https://pay.cakto.com.br/gdasrrz?affiliate=5VpenuEW" class="plan-cta-button" id="buyBasicPlanButton" target="_blank">GARANTIR PLANO BÁSICO</a>
+            </div>
+
+            <!-- Plano Completo -->
+            <div class="plan-card">
+                <h3 class="plan-title">Plano Premium</h3>
+                <p class="plan-books">7 Livros Digitais Completos</p>
+                <div class="price-section">
+                    <span class="plan-price-old">DE R$250,00 POR</span>
+                    <span class="plan-price-new">R$39,90</span>
+                </div>
+                <a href="https://pay.cakto.com.br/35rn4ru_293743?affiliate=5VpenuEW" class="plan-cta-button" id="buyCompletePlanButton" target="_blank">GARANTIR PLANO PREMIUM</a>
+            </div>
+        </div>
+
+        <p class="access-info">Acesso Imediato</p>
+
+        <!-- Seção de Provas Sociais (Imagens) -->
+        <div class="social-proof-section">
+            <h2 class="social-proof-title">Resultados Reais, Pessoas Reais</h2>
+            <div class="social-proof-images">
+                <!-- Prova Social 1: Substitua 'URL_DA_IMAGEM_DEPOIMENTO_1_AQUI' pela URL real da sua imagem -->
+                <div class="social-proof-image-wrapper">
+                    <div class="social-proof-image-container">
+                        <img src="depoimentos/img 1.jpg" alt="Depoimento de Cliente 1" class="social-proof-image">
+                    </div>
+                </div>
+                <!-- Prova Social 2: Substitua 'URL_DA_IMAGEM_DEPOIMENTO_2_AQUI' pela URL real da sua imagem -->
+                <div class="social-proof-image-wrapper">
+                    <div class="social-proof-image-container">
+                        <img src="depoimentos/img 2.jpg" alt="Depoimento de Cliente 2" class="social-proof-image">
+                    </div>
+                </div>
+                <!-- Prova Social 3: Substitua 'URL_DA_IMAGEM_DEPOIMENTO_3_AQUI' pela URL real da sua imagem -->
+                <div class="social-proof-image-wrapper">
+                    <div class="social-proof-image-container">
+                        <img src="depoimentos/img 3.jpg" alt="Depoimento de Cliente 3" class="social-proof-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seção de Garantia de Satisfação (no final) -->
+        <div class="guarantee-section">
+            <!-- Selo de Qualidade (Ícone SVG de Checkmark) -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 00-1.154-.974l-3.373 2.56-1.413-1.891a.75.75 0 00-1.154.974l2.078 2.78a.75.75 0 001.154 0l3.96-3.75z" clip-rule="evenodd" />
+            </svg>
+            <p class="guarantee-text">
+                <strong>Garantia de satisfação:</strong> se você não gostar, devolvemos seu dinheiro em até 7 dias!
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Lógica do Contador Regressivo
+        const countdownElement = document.getElementById('countdown');
+        const durationInMinutes = 15; // Duração do contador em minutos
+        let endTime = localStorage.getItem('countdownEndTime');
+
+        // Se não houver um tempo final salvo, define um novo tempo final
+        if (!endTime || new Date().getTime() > endTime) {
+            endTime = new Date().getTime() + durationInMinutes * 60 * 1000;
+            localStorage.setItem('countdownEndTime', endTime);
+        } else {
+            endTime = parseInt(endTime); // Converte para número se já existir
+        }
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = endTime - now;
+
+            // Calcula minutos e segundos
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Exibe o resultado no elemento
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                countdownElement.innerHTML = "OFERTA ENCERRADA!";
+                // Opcional: Desabilitar os botões de compra ou redirecionar
+                document.getElementById('buyBasicPlanButton').disabled = true;
+                document.getElementById('buyBasicPlanButton').style.opacity = '0.5';
+                document.getElementById('buyBasicPlanButton').style.cursor = 'not-allowed';
+
+                document.getElementById('buyCompletePlanButton').disabled = true;
+                document.getElementById('buyCompletePlanButton').style.opacity = '0.5';
+                document.getElementById('buyCompletePlanButton').style.cursor = 'not-allowed';
+            } else {
+                countdownElement.innerHTML = `FALTAM ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')} MINUTOS!`;
+            }
+        }
+
+        // Atualiza o contador a cada 1 segundo
+        const countdownInterval = setInterval(updateCountdown, 1000);
+        updateCountdown(); // Chama a função imediatamente para evitar atraso inicial
+
+
+        // Simulação de carregamento da imagem principal (substitua pela sua URL real)
+        window.onload = function() {
+            const productImage = document.querySelector('.product-image');
+            // Substitua 'URL_DA_IMAGEM_PRINCIPAL_DA_OFERTA_AQUI' pela URL real da sua imagem principal
+            const imageUrl = 'https://placehold.co/1080x1350/000000/ffffff?text=Sua+Imagem+Geral+da+Oferta';
+
+            const img = new Image();
+            img.src = imageUrl;
+            img.onload = () => {
+                productImage.src = imageUrl;
+            };
+            img.onerror = () => {
+                console.error('Erro ao carregar a imagem. Usando placeholder.');
+                // Em caso de erro, garantimos que um placeholder seja exibido.
+                productImage.src = 'https://placehold.co/1080x1350/000000/ffffff?text=Sua+Imagem+Geral+da+Oferta';
+            };
+
+            // Lógica do Carrossel de Imagens dos Livros
+            const bookCarouselSlides = document.getElementById('bookCarouselSlides');
+            const bookSlides = document.querySelectorAll('.book-carousel-slide');
+            const bookPrevButton = document.getElementById('bookPrevSlide');
+            const bookNextButton = document.getElementById('bookNextSlide');
+            const bookCarouselDotsContainer = document.getElementById('bookCarouselDots');
+            let currentBookSlide = 0;
+
+            // Cria os pontos de navegação para o carrossel de livros
+            bookSlides.forEach((_, index) => {
+                const dot = document.createElement('span');
+                dot.classList.add('dot');
+                if (index === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => {
+                    currentBookSlide = index;
+                    updateBookCarousel();
+                });
+                bookCarouselDotsContainer.appendChild(dot);
+            });
+
+            const bookDots = document.querySelectorAll('#bookCarouselDots .dot');
+
+            function updateBookCarousel() {
+                const offset = -currentBookSlide * 100;
+                bookCarouselSlides.style.transform = `translateX(${offset}%)`;
+
+                bookDots.forEach((dot, index) => {
+                    if (index === currentBookSlide) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+
+            bookPrevButton.addEventListener('click', () => {
+                currentBookSlide = (currentBookSlide === 0) ? bookSlides.length - 1 : currentBookSlide - 1;
+                updateBookCarousel();
+            });
+
+            bookNextButton.addEventListener('click', () => {
+                currentBookSlide = (currentBookSlide === bookSlides.length - 1) ? 0 : currentBookSlide + 1;
+                updateBookCarousel();
+            });
+
+            // Opcional: Auto-slide para o carrossel de livros
+            setInterval(() => {
+                currentBookSlide = (currentBookSlide === bookSlides.length - 1) ? 0 : currentBookSlide + 1;
+                updateBookCarousel();
+            }, 4000); // Muda a cada 4 segundos
+        };
+
+        // Lógica dos botões de compra dos planos
+        document.getElementById('buyBasicPlanButton').addEventListener('click', function(event) {
+            event.preventDefault();
+            // Redireciona para o link de afiliado do Plano Básico (R$29,90)
+            window.location.href = 'https://pay.cakto.com.br/gdasrrz?affiliate=5VpenuEW';
+        });
+
+        document.getElementById('buyCompletePlanButton').addEventListener('click', function(event) {
+            event.preventDefault();
+            // Redireciona para o link de afiliado do Plano Premium (R$39,90)
+            window.location.href = 'https://pay.cakto.com.br/35rn4ru_293743?affiliate=5VpenuEW';
+        });
+    </script>
+</body>
+</html>
